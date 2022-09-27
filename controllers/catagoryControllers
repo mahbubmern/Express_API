@@ -1,0 +1,134 @@
+const path = require('path');
+const { readFileSync, writeFileSync } = require('fs');
+const { json } = require('express');
+
+
+/**
+ * @desc get all catagory data
+ * @name GET /api/v1/catagory 
+ * @access public
+ */
+const getAllCatagory = (req, res)=>{
+
+	const catagory = JSON.parse(readFileSync(path.join(__dirname, '../db/catagory.json')))
+
+	res.json(catagory)
+
+
+
+}
+
+/**
+ * @desc create catagory
+ * @name POST /api/v1/catagory
+ * @access public
+ */
+
+
+const createCatagory = (req, res)=>{
+	const catagory = JSON.parse(readFileSync(path.join(__dirname, '../db/catagory.json')))
+
+
+	const {name, slug} = req.body
+	if (!name || !slug ) {
+		res.status(400).json({
+			message : 'All Fields are required'
+		})
+	} else {
+
+		catagory.push({
+			name : name,
+			slug : slug,
+			
+		});
+				
+		writeFileSync(path.join(__dirname , '../db/catagory.json'), JSON.stringify(catagory));
+		
+		res.status(201).json({
+			message : "Catagory created successfully"
+		})
+	}
+}
+
+/**
+ * @desc Get single catagory
+ * @name GET /api/v1/catagory/:id
+ * @access public
+ */
+
+const getSingleCatagory = (req, res)=>{
+	const catagory = JSON.parse(readFileSync(path.join(__dirname, '../db/catagory.json')))
+	const {slug} = req.params
+	const singleCatagory = catagory.find(data => data.slug == slug);
+
+	if (singleCatagory) {
+		res.status(200).json(singleCatagory)
+	} else {
+		res.status(400).json({
+			message : 'Catagory Not Found'
+		})
+	}
+}
+
+/**
+ * @desc Delete single catagory
+ * @name DELETE /api/v1/catagory/:id
+ * @access public
+ */
+
+
+const deleteCatagory = (req, res)=>{
+	const catagory = JSON.parse(readFileSync(path.join(__dirname, '../db/catagory.json')))
+
+	
+	
+
+	if (catagory.some(data => data.slug == req.params.slug)) {
+		const dataAfterDeletion = catagory.filter(data => data.slug != req.params.slug);
+		writeFileSync(path.join(__dirname, '../db/catagory.json'), JSON.stringify(dataAfterDeletion))
+		res.status(200).json({
+			message : 'Catagory Deletion Successfull'
+		})
+	} else {
+		res.status(404).json({
+			message : 'Catagory Data not Found to delete'
+		})
+	}
+}
+
+
+/**
+ * @desc Update single catagory
+ * @name PUT/PATCH /api/v1/catagory/:id
+ * @access public
+ */
+
+
+const updateCatagory = (req, res)=>{
+	const catagory = JSON.parse(readFileSync(path.join(__dirname, '../db/catagory.json')))
+
+	if (catagory.some(data => data.slug == req.params.slug)) {
+		catagory[catagory.findIndex(data => data.slug == req.params.slug)] = {
+			...catagory[catagory.findIndex(data => data.slug == req.params.slug)],
+			...req.body
+	
+		}
+		writeFileSync(path.join(__dirname, '../db/catagory.json'), JSON.stringify(catagory))
+			res.status(200).json({
+				message : 'Catagory Update Successfull'
+			})
+	} else {
+		res.status(404).json({
+			message : 'Catagory not found to update'
+		})
+	}
+}
+
+module.exports = {
+	getAllCatagory,
+	createCatagory,
+	getSingleCatagory,
+	deleteCatagory, 
+	updateCatagory
+	
+};

@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+	padding: 0;
+	margin: 0;
+	font-family: poppins;
+	box-sizing: border-box;
+}
+p{
+	padding: 0;
+	margin: 0;
+}
+
+.allStudent img {
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	border-radius: 5px;
+}
+.add_student img{
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+.showStudent img{
+	height: 250px;
+	width: 250px;
+	object-fit: cover;
+	border: 1px solid #cac8c8;
+}
+.studentDetails{
+	display: flex;
+	justify-content: space-between;
+}
+.details2ndPart h6{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 18px;
+}
+.details2ndPart p{
+	line-height: 37px;
+}
+.details2ndPart{
+	margin-left: 30px;
+}

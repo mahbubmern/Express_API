@@ -1,0 +1,58 @@
+<div class="container my-5 add_student">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <a class="btn btn-md btn-warning" href="/student">Back</a>
+            <br>
+            <br>
+            <div class="card shadow">
+                <div class="card-header">
+                    <h4>Add Student Data</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/student/create" method="post" enctype="multipart/form-data">
+                        <div class="my-3">
+                            <label for="">Name</label>
+                            <input class="form-control" type="text" name="name" id="">
+                        </div>
+                        <div class="my-3">
+                            <label for="">Email</label>
+                            <input class="form-control" type="text" name="email" id="">
+                        </div>
+                        <div class="my-3">
+                            <label for="">Cell</label>
+                            <input class="form-control" type="text" name="cell" id="">
+                        </div>
+                        <div class="my-3">
+                            <label for="">Location</label>
+                           <select class="form-control" name="location" id="">
+                            <option value="">-select-</option>
+                            <option value="Jatbari">Jatbari</option>
+                            <option value="Wari">Wari</option>
+                            <option value="Badda">Badda</option>
+                            <option value="Gulshan">Gulshan</option>
+                            <option value="Banani">Banani</option>
+                            <option value="Dhanmondi">Dhanmondi</option>
+                           </select>
+                        </div>
+
+                        <div class="my-3">
+                           <img class="imageLink" src="" alt="">
+                        </div>
+
+                        <div class="my-3">
+                            <label for="upload_photo">Photo
+                                 <input type="file" name="photo" id="upload_photo">
+                             </label>
+                        </div>
+                        <div class="my-3">
+                            
+                            <input class="w-100 btn btn-md btn-success" type="submit" value="Create">
+                           
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

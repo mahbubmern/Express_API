@@ -1,0 +1,34 @@
+<div class="container showStudent my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <a class="btn btn-md btn-info" href="/student">Back</a>
+            <br>
+            <br>
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="card-header">
+                        <h5>Displayed <%= students.name %>'s Details</h5>
+                    </div>
+                    <div class="card-body">
+                       <div class="studentDetails">
+                            <div class="details1StPart">
+                                <% if (students.photo == 'avatar.png') { %>
+                                    <img src="/images/avatar.png" alt="">
+                                    <% } else { %>
+                                        <img src="/images/student/<%= students.photo %>" alt="">
+                                     
+                                <% } %>
+                            </div>
+                            <div class="details2ndPart">
+                                <h6>Name : <%= students.name %></h6>
+                                <p>Email : <%= students.email %></p>
+                                <p>Cell : <%= students.cell %></p>
+                                <p>Location : <%= students.location %></p>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

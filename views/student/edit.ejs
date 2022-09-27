@@ -1,0 +1,63 @@
+<div class="container my-5 edit_student">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <a class="btn btn-md btn-warning" href="/student">Back</a>
+            <br>
+            <br>
+            <div class="card shadow">
+                <div class="card-header">
+                    <h4>Edit <%= student.name %>  Data</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/student/update/<%= student.id %>" method="post" enctype="multipart/form-data">
+                        <div class="my-3">
+                            <label for="">Name</label>
+                            <input class="form-control" type="text" value="<%= student.name %>" name="name" id="">
+                        </div>
+                        <div class="my-3">
+                            <label for="">Email</label>
+                            <input class="form-control" type="text" value="<%= student.email %>" name="email" id="">
+                        </div>
+                        <div class="my-3">
+                            <label for="">Cell</label>
+                            <input class="form-control" type="text" value="<%= student.cell %>" name="cell" id="">
+                        </div>
+                        <div class="my-3">
+                            <label for="">Location</label>
+                           <select class="form-control" name="location" id="">
+                            <option value="">-select-</option>
+                            <option <% if (student.location == 'Jatbari') { %> selected <% } %> value="Jatbari">Jatbari</option>
+                            <option <% if (student.location == 'Wari') { %> selected <% } %> value="Wari">Wari</option>
+                            <option <% if (student.location == 'Badda') { %> selected <% } %> value="Badda">Badda</option>
+                            <option <% if (student.location == 'Gulshan') { %> selected <% } %> value="Gulshan">Gulshan</option>
+                            <option <% if (student.location == 'Banani') { %> selected <% } %> value="Banani">Banani</option>
+                            <option <% if (student.location == 'Dhanmondi') { %> selected <% } %> value="Dhanmondi">Dhanmondi</option>
+                           </select>
+                        </div>
+
+                        <div class="my-3">
+                            <% if (student.photo == 'avatar.png') { %>
+                                <img class="imageLink w-100"  src="/images/avatar.png" alt="">
+                                <% } else { %>
+                                 
+                                    <img class="imageLink w-100"  src="/images/student/<%= student.photo %>" alt="">
+                            <% } %>
+                        </div>
+
+                        <div class="my-3">
+                            <label for="upload_photo">Photo
+                                 <input type="file" name="photo" id="upload_photo">
+                             </label>
+                        </div>
+                        <div class="my-3">
+                            
+                            <input class="w-100 btn btn-md btn-success" type="submit" value="Update">
+                           
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
